@@ -12,11 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     int monthNum;
     int nextNum;
     Button button;
+    private Intent intent;
+    String TAG = MainActivity.class.getSimpleName();
 
 
     @Override
@@ -37,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         ed_month = findViewById(R.id.month);
         ed_next = findViewById(R.id.next);
+        intent = new Intent(this,ResultActivity.class);
+
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -52,15 +58,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
             }
         });
 
     }
     DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+
+
+
         @Override
         public void onClick(DialogInterface dialog, int which) {
             ed_month.setText(" ");
             ed_next.setText(" ");
+
         }
     };
 
@@ -79,11 +90,23 @@ public class MainActivity extends AppCompatActivity {
             }if(monthNum>=51){
                 fee = monthNum *12.075-110.25;
             }
-            new AlertDialog.Builder(MainActivity.this)
-                    .setMessage("水費:"+ fee)
-                    .setTitle("計算結果")
-                    .setPositiveButton("OK",listener)
-                    .show();
+
+            //new AlertDialog.Builder(MainActivity.this)
+                    //.setMessage("水費:"+ fee)
+                    //.setTitle("計算結果")
+                    //.setPositiveButton("OK",listener)
+                    //.show();
+            intent = new Intent(this,ResultActivity.class);
+            intent.putExtra("FEE",fee);
+            startActivity(intent);
+            Log.d("ResultActivity","fee");
+
+
+
+
+
+
+
 
 
         }else if(TextUtils.isEmpty(month)&&!TextUtils.isEmpty(next)){
@@ -97,11 +120,15 @@ public class MainActivity extends AppCompatActivity {
             }if(nextNum>=51){
                 fee = nextNum *12.075-220.5;
             }
-            new AlertDialog.Builder(MainActivity.this)
-                    .setMessage("水費:"+ fee)
-                    .setTitle("計算結果")
-                    .setPositiveButton("OK",listener)
-                    .show();
+            //new AlertDialog.Builder(MainActivity.this)
+                    //.setMessage("水費:"+ fee)
+                    //.setTitle("計算結果")
+                    //.setPositiveButton("OK",listener)
+                    //.show();
+            intent = new Intent(this,ResultActivity.class);
+            intent.putExtra("FEE",fee);
+            startActivity(intent);
+            Log.d("ResultActivity","fee");
         }
     }
 
