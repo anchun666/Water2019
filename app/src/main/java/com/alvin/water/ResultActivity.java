@@ -1,0 +1,21 @@
+package com.alvin.water;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.google.android.material.internal.NavigationMenu;
+
+import java.util.jar.Attributes;
+
+public class ResultActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+
+
+
+    }
+}
