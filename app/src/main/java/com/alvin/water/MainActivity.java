@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ed_month = findViewById(R.id.month);
-        ed_next = findViewById(R.id.next);
+//        ed_next = findViewById(R.id.next);
         intent = new Intent(this,ResultActivity.class);
 
 
@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity {
             }if(nextNum>=51){
                 fee = nextNum *12.075-220.5;
             }
-            //new AlertDialog.Builder(MainActivity.this)
-                    //.setMessage("水費:"+ fee)
-                    //.setTitle("計算結果")
-                    //.setPositiveButton("OK",listener)
-                    //.show();
+            new AlertDialog.Builder(MainActivity.this)
+                    .setMessage(getString(R.string.fee)+ fee)
+                    .setTitle(getString(R.string.answer))
+                    .setPositiveButton(getString(R.string.ok),listener)
+                    .show();
             intent = new Intent(this,ResultActivity.class);
-            intent.putExtra("FEE",fee);
+            intent.putExtra(getString(R.string.extra_fee),fee);
             startActivity(intent);
             Log.d("ResultActivity","fee");
         }

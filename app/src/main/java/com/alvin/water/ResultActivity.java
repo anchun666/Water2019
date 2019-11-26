@@ -14,23 +14,20 @@ import java.util.jar.Attributes;
 public class ResultActivity extends AppCompatActivity {
 
 
+    private static final double DEFAULTVALUE = 0;
     private TextView feeText;
+    private static final String TAG = ResultActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         Intent intent = getIntent();
-        double fee = intent.getDoubleExtra("FEE",-1);
-        Log.d("ResultActivity","fee");
+        double fee = getIntent().getDoubleExtra(getString(R.string.extra_fee), DEFAULTVALUE);
+        Log.d(TAG, fee + " ");
         feeText = findViewById(R.id.fee);
-        int n = (int)(fee+0.5d);
-        feeText.setText(n+" ");
-
-
-
-
-
+        int n = (int) (fee + 0.5d);
+        feeText.setText(n + " ");
 
 
     }
