@@ -17,7 +17,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     private Intent intent;
     String TAG = MainActivity.class.getSimpleName();
+    private Switch sw;
+    boolean isNext = false;
 
 
     @Override
@@ -39,9 +43,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ed_month = findViewById(R.id.month);
+        ed_month = findViewById(R.id.type);
+
+
+
 //        ed_next = findViewById(R.id.next);
         intent = new Intent(this,ResultActivity.class);
+        sw = findViewById(R.id.sw);
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isNext = isChecked;
+                TextView text = findViewById(R.id.type);
+                text.setText(isNext ? getString(R.string.every_other_month) : getString(R.string.monthly));
+
+            }
+        });
 
 
 
