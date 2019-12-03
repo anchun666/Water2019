@@ -30,4 +30,10 @@
 
     <include layout="@layout/content_main" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/cities" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

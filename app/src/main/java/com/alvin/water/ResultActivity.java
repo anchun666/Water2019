@@ -14,7 +14,7 @@ import java.util.jar.Attributes;
 public class ResultActivity extends AppCompatActivity {
 
 
-    private static final double DEFAULTVALUE = 0;
+    private static final double DEFAULTVALUE = -1;
     private TextView feeText;
     private static final String TAG = ResultActivity.class.getSimpleName();
 
